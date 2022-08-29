@@ -1,12 +1,11 @@
-﻿using Entities.Abstract;
+﻿using Core.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace DataAccessLayer.Abstract
+
+namespace Core.DataAccess
 {
     //burada kısıtlama koydum interface
     //sadece class olabilir 
