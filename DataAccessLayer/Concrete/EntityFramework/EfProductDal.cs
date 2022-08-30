@@ -1,11 +1,14 @@
 ﻿using Core.DataAccess.EntityFramework;
 using DataAccessLayer.Abstract;
 using Entities.Concrete;
+using Entities.DTO;
+using System.Collections.Generic;
+using System.Linq;
 
 
 namespace DataAccessLayer.Concrete.EntityFramework
 {
-    public class EfProductDal : EfEntityRepositoryBase<Products, NorthwindDbContext>, IProductDal
+    public class EfProductDal : EfEntityRepositoryBase<Product, NorthwindDbContext>, IProductDal
     {
 
 
@@ -75,10 +78,21 @@ namespace DataAccessLayer.Concrete.EntityFramework
 
         //    }
         //}
-        #endregion 
+        #endregion
         ////////////////////////////
+   
+        public List<ProductDetailDto> GetProductDetailse()
+        {
+            using (NorthwindDbContext context=new NorthwindDbContext())
+            {
+                var result = from p in context.products
+                             join c in context.categories
+                             on p.CategoryID equals c.CategoryId
+                             select new ProductDetailDto {ProductId=p.ProductID, ProductName=p.ProductName,CategoryName=c.CategoryName,UnitsInStock=p.UnitsInStock };
+                return result.ToList();
+            }
 
 
-
+        }
     }
 }

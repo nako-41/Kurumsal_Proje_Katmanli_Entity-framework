@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Entities.Concrete
 {
-    public class Products:IEntity
+    public class Product:IEntity
     {
         [Key]
         public int ProductID { get; set; }

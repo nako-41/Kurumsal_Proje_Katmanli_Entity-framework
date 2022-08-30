@@ -13,20 +13,37 @@ namespace ConsoleUI
         {
             //ProductTest();
 
+            //CategoryTest();
+
+
+            //Ioc - DTO
+
+            ProductManagerBLL pm = new ProductManagerBLL(new EfProductDal());
+
+            foreach (var item in pm.GetProductDetailse())
+            {
+                Console.WriteLine(item.ProductName + " " + item.CategoryName);
+            }
+
+
+
+            Console.ReadKey();
+        }
+
+        private static void CategoryTest()
+        {
             CategoryManager category = new CategoryManager(new EfCategoryDal());
 
             foreach (var item in category.GetAll())
             {
                 Console.WriteLine(item.CategoryName);
             }
-
-            Console.ReadKey();
         }
 
         private static void ProductTest()
         {
             ProductManagerBLL pm = new ProductManagerBLL(new EfProductDal());
-            List<Products> list = pm.GetByUnitPrice(30, 45);
+            List<Product> list = pm.GetByUnitPrice(30, 45);
 
             foreach (var item in pm.GelAllByCategoryId(2))
             {

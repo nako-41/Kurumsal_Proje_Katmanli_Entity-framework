@@ -1,4 +1,5 @@
 ﻿using Entities.Concrete;
+using Entities.DTO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,9 +10,10 @@ namespace BusinessLogicLayer.Abstract
 {
     public interface IProductService
     {
-        List<Products> GetAll();
-        List<Products> GelAllByCategoryId(int id);
-        List<Products> GetByUnitPrice(decimal min,decimal max);
+        List<Product> GetAll();
+        List<Product> GelAllByCategoryId(int id);
+        List<Product> GetByUnitPrice(decimal min,decimal max);
+        List<ProductDetailDto> GetProductDetailse();
 
     }
 }
