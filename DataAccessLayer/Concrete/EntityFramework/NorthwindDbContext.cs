@@ -13,13 +13,14 @@ namespace DataAccessLayer.Concrete.EntityFramework
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"Server=DESKTOP-014OO3I\OKAN;Database=Northwind;Trusted_Connection=true");
+            optionsBuilder.UseSqlServer(@"Server=.;Database=Northwind;Trusted_Connection=true");
 
         }
 
         public DbSet<Products> products { get; set; }
         public DbSet<Category> categories { get; set; }
         public DbSet<Customer> customers { get; set; }
+        public DbSet<Order> orders { get; set; }
 
     }
 }

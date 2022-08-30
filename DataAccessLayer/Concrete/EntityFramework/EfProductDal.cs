@@ -1,18 +1,14 @@
 ﻿using Core.DataAccess.EntityFramework;
 using DataAccessLayer.Abstract;
 using Entities.Concrete;
-using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace DataAccessLayer.Concrete.EntityFramework
 {
-    public class EfProductDal : EfEntityRepositoryBase<Products,NorthwindDbContext>,IProductDal
+    public class EfProductDal : EfEntityRepositoryBase<Products, NorthwindDbContext>, IProductDal
     {
+
+
         ////////////////////////////
         #region code refactoring'den onceki hali,sadece IProductDal Hali
         //public void Add(Products entity)
@@ -81,6 +77,8 @@ namespace DataAccessLayer.Concrete.EntityFramework
         //}
         #endregion 
         ////////////////////////////
+
+
 
     }
 }

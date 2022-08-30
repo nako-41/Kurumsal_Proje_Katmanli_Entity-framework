@@ -11,8 +11,20 @@ namespace ConsoleUI
     {
         static void Main(string[] args)
         {
+            //ProductTest();
 
+            CategoryManager category = new CategoryManager(new EfCategoryDal());
 
+            foreach (var item in category.GetAll())
+            {
+                Console.WriteLine(item.CategoryName);
+            }
+
+            Console.ReadKey();
+        }
+
+        private static void ProductTest()
+        {
             ProductManagerBLL pm = new ProductManagerBLL(new EfProductDal());
             List<Products> list = pm.GetByUnitPrice(30, 45);
 
@@ -30,7 +42,6 @@ namespace ConsoleUI
             {
                 Console.WriteLine(item.ProductName);
             }
-
         }
     }
 }

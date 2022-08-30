@@ -50,18 +50,18 @@ namespace Core.DataAccess.EntityFramework
                 //filter null ise product tı listeleyip getir
                 //degilse sarta gore data geitr 
 
-                //if (filter==null)
-                //{
-                //  return db.products.ToList();
-                //}
-                //else
-                //{
-                //   return db.products.Where(filter).ToList();
-                //}
+                if (filter == null)
+                {
+                    return db.Set<TEntity>().ToList();
+                }
+                else
+                {
+                    return db.Set<TEntity>().Where(filter).ToList();
+                }
 
-                return filter == null
-               ? db.Set<TEntity>().ToList()
-               : db.Set<TEntity>().Where(filter).ToList();
+                // return filter == null
+                //? db.Set<TEntity>().ToList()
+                //: db.Set<TEntity>().Where(filter).ToList();
 
 
             }
