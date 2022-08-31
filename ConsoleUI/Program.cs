@@ -1,4 +1,5 @@
 ﻿using BusinessLogicLayer.Concrete;
+using Core.Utilities.Results;
 using DataAccessLayer.Concrete.EntityFramework;
 using DataAccessLayer.Concrete.InMemory;
 using Entities.Concrete;
@@ -25,13 +26,18 @@ namespace ConsoleUI
             //    Console.WriteLine(item.ProductName + " " + item.CategoryName);
             //}
 
-            SupplierManager supplier = new SupplierManager(new EfSupplierDal());
+            ProductManagerBLL productManagerBLL = new ProductManagerBLL(new EfProductDal());
+          IResult result=  productManagerBLL.Add(new Product {ProductName="masa" });
+            Console.WriteLine(result.Message + " " + result.Success);
 
-            foreach (var item in supplier.GetProductDetailse())
-            {
-                Console.WriteLine(item.CompanyName + " " + item.ProductName);
-            }
+            //SupplierManager supplier = new SupplierManager(new EfSupplierDal());
 
+            //foreach (var item in supplier.GetProductDetailse())
+            //{
+            //    Console.WriteLine(item.CompanyName + " " + item.ProductName);
+            //}
+
+        
 
 
             Console.ReadKey();

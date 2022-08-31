@@ -1,4 +1,5 @@
 ﻿using BusinessLogicLayer.Abstract;
+using Core.Utilities.Results;
 using DataAccessLayer.Abstract;
 using Entities.Concrete;
 using Entities.DTO;
@@ -42,6 +43,22 @@ namespace BusinessLogicLayer.Concrete
         public List<ProductDetailDto> GetProductDetailse()
         {
             return _productDal.GetProductDetailse();
+        }
+
+        public IResult Add(Product product)
+        {
+            if (product.ProductName.Length<2)
+            {
+                return new ErrorResult("urun ismi min 2 karakter olmalıdır.");
+            }
+            _productDal.Add(product);
+
+            return new SuccessResult("ürün eklendi");
+        }
+
+        public Product GetById(int ProductId)
+        {
+            return _productDal.Get(p=>p.ProductID==ProductId);
         }
     }
 }
