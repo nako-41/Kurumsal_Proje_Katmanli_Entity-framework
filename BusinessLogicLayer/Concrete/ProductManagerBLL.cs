@@ -1,4 +1,5 @@
 ﻿using BusinessLogicLayer.Abstract;
+using BusinessLogicLayer.Constants;
 using Core.Utilities.Results;
 using DataAccessLayer.Abstract;
 using Entities.Concrete;
@@ -20,9 +21,14 @@ namespace BusinessLogicLayer.Concrete
             _productDal = productDal;
         }
 
-        public List<Product> GetAll()
+        public IDataResult<List<Product>> GetAll()
         {
-            return _productDal.GetAll();
+            if (DateTime.Now.Hour==22)
+            {
+                return new ErrorDataResult<List<Product>>(Messages.MaintenanceTime);
+            }
+
+            return new DataResult<List<Product>>( _productDal.GetAll(),Messages.ProductsListed);
         }
 
         public Product Get(Product products)
@@ -30,35 +36,36 @@ namespace BusinessLogicLayer.Concrete
             return _productDal.Get(x=>x.ProductID==products.ProductID);
         }
 
-        public List<Product> GelAllByCategoryId(int id)
+        public IDataResult<List<Product>> GelAllByCategoryId(int id)
         {
-            return _productDal.GetAll(x=>x.CategoryID==id);
+            return new SuccessDataResult<List<Product>>(_productDal.GetAll(x=>x.CategoryID==id));
         }
 
-        public List<Product> GetByUnitPrice(decimal min, decimal max)
+        public IDataResult<List<Product>> GetByUnitPrice(decimal min, decimal max)
         {
-            return _productDal.GetAll(p=>p.UnitPrice>=min && p.UnitPrice<=max);
+            return new SuccessDataResult<List<Product>>(_productDal.GetAll(p=>p.UnitPrice>=min && p.UnitPrice<=max));
         }
 
-        public List<ProductDetailDto> GetProductDetailse()
+        public IDataResult<List<ProductDetailDto>> GetProductDetailse()
         {
-            return _productDal.GetProductDetailse();
+            return new SuccessDataResult<List<ProductDetailDto>>(_productDal.GetProductDetailse());
         }
 
         public IResult Add(Product product)
         {
             if (product.ProductName.Length<2)
             {
-                return new ErrorResult("urun ismi min 2 karakter olmalıdır.");
+                //magic strings
+                return new ErrorResult(Messages.ProductNameInvalid);
             }
             _productDal.Add(product);
 
-            return new SuccessResult("ürün eklendi");
+            return new SuccessResult(Messages.ProductAdded);
         }
 
-        public Product GetById(int ProductId)
+        public IDataResult<Product> GetById(int ProductId)
         {
-            return _productDal.Get(p=>p.ProductID==ProductId);
+            return new SuccessDataResult<Product>(_productDal.Get(p=>p.ProductID==ProductId));
         }
     }
 }
