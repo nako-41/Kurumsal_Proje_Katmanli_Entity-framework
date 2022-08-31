@@ -19,16 +19,18 @@ namespace ConsoleUI
 
             //Ioc - DTO
 
-            //ProductManagerBLL pm = new ProductManagerBLL(new EfProductDal());
+            ProductManagerBLL pm = new ProductManagerBLL(new EfProductDal());
 
-            //foreach (var item in pm.GetProductDetailse())
-            //{
-            //    Console.WriteLine(item.ProductName + " " + item.CategoryName);
-            //}
+            var result = pm.GetProductDetailse();
 
-            ProductManagerBLL productManagerBLL = new ProductManagerBLL(new EfProductDal());
-          IResult result=  productManagerBLL.Add(new Product {ProductName="masa" });
-            Console.WriteLine(result.Message + " " + result.Success);
+            foreach (var IDataResult in result.Data)
+            {
+                Console.WriteLine(IDataResult.ProductName + " " + IDataResult.CategoryName);
+            }
+
+            //ProductManagerBLL productManagerBLL = new ProductManagerBLL(new EfProductDal());
+            //IResult result=  productManagerBLL.Add(new Product {ProductName="masa" });
+            //Console.WriteLine(result.Message + " " + result.Success);
 
             //SupplierManager supplier = new SupplierManager(new EfSupplierDal());
 
@@ -37,7 +39,7 @@ namespace ConsoleUI
             //    Console.WriteLine(item.CompanyName + " " + item.ProductName);
             //}
 
-        
+
 
 
             Console.ReadKey();
@@ -55,23 +57,23 @@ namespace ConsoleUI
 
         private static void ProductTest()
         {
-            ProductManagerBLL pm = new ProductManagerBLL(new EfProductDal());
-            List<Product> list = pm.GetByUnitPrice(30, 45);
+            //ProductManagerBLL pm = new ProductManagerBLL(new EfProductDal());
+            //List<Product> list = pm.GetByUnitPrice(30, 45);
 
-            foreach (var item in pm.GelAllByCategoryId(2))
-            {
-                Console.WriteLine(item.ProductName);
-            }
+            //foreach (var item in pm.GelAllByCategoryId(2))
+            //{
+            //    Console.WriteLine(item.ProductName);
+            //}
 
-            foreach (var item in list)
-            {
-                Console.WriteLine(item.ProductName);
-            }
+            //foreach (var item in list)
+            //{
+            //    Console.WriteLine(item.ProductName);
+            //}
 
-            foreach (var item in pm.GetAll())
-            {
-                Console.WriteLine(item.ProductName);
-            }
+            //foreach (var item in pm.GetAll())
+            //{
+            //    Console.WriteLine(item.ProductName);
+            //}
         }
     }
 }

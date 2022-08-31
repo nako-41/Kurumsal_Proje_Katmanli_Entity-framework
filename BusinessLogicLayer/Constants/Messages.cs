@@ -11,7 +11,7 @@ namespace BusinessLogicLayer.Constants
     {
         public static string ProductAdded = "Ürün Eklendi";
         public static string ProductNameInvalid = "Ürün ismi gecersiz";
-        internal static List<Product> MaintenanceTime;
-        internal static bool ProductsListed;
+        internal static string MaintenanceTime="Sitem Bakımda";
+        internal static string ProductsListed="Ürünler Listelendi";
     }
 }

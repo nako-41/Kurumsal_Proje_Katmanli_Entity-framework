@@ -5,6 +5,7 @@ using DataAccessLayer.Abstract;
 using Entities.Concrete;
 using Entities.DTO;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -28,7 +29,7 @@ namespace BusinessLogicLayer.Concrete
                 return new ErrorDataResult<List<Product>>(Messages.MaintenanceTime);
             }
 
-            return new DataResult<List<Product>>( _productDal.GetAll(),Messages.ProductsListed);
+            return new DataResult<List<Product>>( _productDal.GetAll(),true,Messages.ProductsListed);
         }
 
         public Product Get(Product products)
@@ -67,5 +68,7 @@ namespace BusinessLogicLayer.Concrete
         {
             return new SuccessDataResult<Product>(_productDal.Get(p=>p.ProductID==ProductId));
         }
+
+       
     }
 }
