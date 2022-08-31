@@ -18,11 +18,18 @@ namespace ConsoleUI
 
             //Ioc - DTO
 
-            ProductManagerBLL pm = new ProductManagerBLL(new EfProductDal());
+            //ProductManagerBLL pm = new ProductManagerBLL(new EfProductDal());
 
-            foreach (var item in pm.GetProductDetailse())
+            //foreach (var item in pm.GetProductDetailse())
+            //{
+            //    Console.WriteLine(item.ProductName + " " + item.CategoryName);
+            //}
+
+            SupplierManager supplier = new SupplierManager(new EfSupplierDal());
+
+            foreach (var item in supplier.GetProductDetailse())
             {
-                Console.WriteLine(item.ProductName + " " + item.CategoryName);
+                Console.WriteLine(item.CompanyName + " " + item.ProductName);
             }
 
 

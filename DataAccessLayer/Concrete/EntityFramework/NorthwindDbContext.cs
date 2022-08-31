@@ -21,6 +21,7 @@ namespace DataAccessLayer.Concrete.EntityFramework
         public DbSet<Category> categories { get; set; }
         public DbSet<Customer> customers { get; set; }
         public DbSet<Order> orders { get; set; }
+        public DbSet<Supplier> suppliers { get; set; }
 
     }
 }
