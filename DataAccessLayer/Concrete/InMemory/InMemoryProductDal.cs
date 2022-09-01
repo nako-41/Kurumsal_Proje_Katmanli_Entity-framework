@@ -16,8 +16,8 @@ namespace DataAccessLayer.Concrete.InMemory
 
         public InMemoryProductDal()
         {
-            //SQL server veya diger db cesitleri varsaydım,suanlık bellek tarafında islem görüyorum runtime
-            _Products = new List<Product>() 
+           // SQL server veya diger db cesitleri varsaydım,suanlık bellek tarafında islem görüyorum runtime
+            _Products = new List<Product>()
             {new Product {ProductID=1,CategoryID=1,ProductName="telefon",UnitsInStock=10,UnitPrice=6000 },
              new Product {ProductID=2,CategoryID=2,ProductName="dolap",UnitsInStock=20,UnitPrice=300 },
              new Product {ProductID=3,CategoryID=2,ProductName="cekmece",UnitsInStock=15,UnitPrice=150 }

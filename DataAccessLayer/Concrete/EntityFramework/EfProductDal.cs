@@ -80,15 +80,15 @@ namespace DataAccessLayer.Concrete.EntityFramework
         //}
         #endregion
         ////////////////////////////
-   
+
         public List<ProductDetailDto> GetProductDetailse()
         {
-            using (NorthwindDbContext context=new NorthwindDbContext())
+            using (NorthwindDbContext context = new NorthwindDbContext())
             {
                 var result = from p in context.products
                              join c in context.categories
                              on p.CategoryID equals c.CategoryId
-                             select new ProductDetailDto {ProductId=p.ProductID, ProductName=p.ProductName,CategoryName=c.CategoryName,UnitsInStock=p.UnitsInStock };
+                             select new ProductDetailDto { ProductId = p.ProductID, ProductName = p.ProductName, CategoryName = c.CategoryName, UnitsInStock = p.UnitsInStock };
                 return result.ToList();
             }
 

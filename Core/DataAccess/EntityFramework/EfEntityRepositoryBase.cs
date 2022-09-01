@@ -42,7 +42,7 @@ namespace Core.DataAccess.EntityFramework
             }
         }
 
-        public List<TEntity> GetAll(Expression<Func<TEntity, bool>> filter = null)
+        public List<TEntity> GetAll(Expression<Func<TEntity, bool>> filter=null)
         {
             using (TContext db = new TContext())
             {
@@ -53,6 +53,7 @@ namespace Core.DataAccess.EntityFramework
                 if (filter == null)
                 {
                     return db.Set<TEntity>().ToList();
+      
                 }
                 else
                 {
