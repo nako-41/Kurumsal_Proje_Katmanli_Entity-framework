@@ -14,7 +14,7 @@ namespace WebAPI.Controllers
     [Route("api/[controller]")]
     [ApiController]
     public class ProductsController : ControllerBase
-    { 
+    {
         private readonly IProductService _productService;
 
 
@@ -25,13 +25,51 @@ namespace WebAPI.Controllers
         }
 
 
-        [HttpGet]
-        public List<Product> Get()
+        [HttpGet("get")]
+        public IActionResult Get()
         {
-        
-            var result = _productService.GetAll();
-            return result.Data;
 
+            var result = _productService.GetAll();
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result.Message);
+
+        }
+
+        [HttpPost]
+        public IActionResult Post(Product product)
+        {
+            var result=_productService.Add(product);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+
+        [HttpGet("GetById")]
+        public IActionResult GetById(int Id)
+        {
+            var result = _productService.GetById(Id);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+
+        [HttpPut]
+        public void Update(Product product)
+        {
+            _productService.Update(product);
+        }
+
+        [HttpDelete]
+        public void Delete(Product product)
+        {
+            _productService.Delete(product);
         }
 
 

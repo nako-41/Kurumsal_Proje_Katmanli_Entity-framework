@@ -33,6 +33,8 @@ namespace BusinessLogicLayer.Abstract
         IDataResult<Product> GetById(int ProductId);
         IDataResult<List<ProductDetailDto>> GetProductDetailse();
         IResult Add(Product product);
+        void Update(Product product);
+        void Delete(Product product);
 
     }
 }

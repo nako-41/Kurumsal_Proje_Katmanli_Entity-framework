@@ -1,5 +1,6 @@
 ﻿using BusinessLogicLayer.Abstract;
 using BusinessLogicLayer.Constants;
+using Core.DataAccess;
 using Core.Utilities.Results;
 using DataAccessLayer.Abstract;
 using Entities.Concrete;
@@ -69,6 +70,14 @@ namespace BusinessLogicLayer.Concrete
             return new SuccessDataResult<Product>(_productDal.Get(p=>p.ProductID==ProductId));
         }
 
-       
+        public void Update(Product product)
+        {
+            _productDal.Update(product);
+        }
+
+        public void Delete(Product product)
+        {
+            _productDal.Delete(product);
+        }
     }
 }
